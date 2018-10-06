@@ -1,4 +1,3 @@
 # Table of contents
 
-* [k-reducer](README.md)
-
+* [Read Me](README.md)
