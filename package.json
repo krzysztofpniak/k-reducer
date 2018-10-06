@@ -1,6 +1,6 @@
 {
   "name": "k-reducer",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/k-reducer.cjs.js",
   "module": "dist/k-reducer.esm.js",
   "browser": "dist/k-reducer.umd.js",
