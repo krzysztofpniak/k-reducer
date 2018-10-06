@@ -1,6 +1,6 @@
 ### `action(matcher, transform)`
 
-Creates a `reducer` that transforms `state` only when `matcher` returns true for provided action`.
+Creates a `reducer` that transforms `state` only when `matcher` returns true for provided `action`.
 
 - `matcher: action -> bool`
 
