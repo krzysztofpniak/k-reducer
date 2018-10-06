@@ -13,7 +13,6 @@ to compose any reducers we have.
 
 ```javascript
 import {createReducer, actionType,} from `k-reducer`;
-import {propEq, assoc,} from 'ramda';
 
 const initialState = {
     title: '',
