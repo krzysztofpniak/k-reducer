@@ -2,7 +2,7 @@
 
 Creates a `reducer` defined by `spec` with `initialState`.
 
-- `initialState: Object | Array | String` - for more information see docs for [`take(pattern)`](#takepattern)
+- `initialState: Object | Array | String`
 
 - `spec: Array<reducer>` - reducer specification
 
