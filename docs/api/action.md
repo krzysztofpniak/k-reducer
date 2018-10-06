@@ -1,6 +1,6 @@
 ### `action(matcher, transform)`
 
-Creates an isolated `reducer` defined by `subReducer` in `type` scope in state.
+Creates a `reducer` that transforms `state` only when `matcher` returns true for provided action`.
 
 - `matcher: action -> bool`
 
@@ -11,8 +11,8 @@ Creates an isolated `reducer` defined by `subReducer` in `type` scope in state.
 In the following example, we nest a form reducer.
 
 ```javascript
-import {createReducer, nest,} from `k-reducer`;
-import {propEq, assoc,} from 'ramda';
+import {createReducer, action,} from `k-reducer`;
+import {propEq, assoc, over, lensProp, compose, add,} from 'ramda';
 
 const initialState = {
     title: '',
