@@ -8,7 +8,7 @@ Creates a `reducer` defined by `spec` with `initialState`.
 
 #### Example
 
-In the following example, we create a basic reducer`. We use `createReducer` ...
+In the following example, we create a basic reducer. We use `createReducer` ...
 
 ```javascript
 import { createReducer } from `k-reducer`;
