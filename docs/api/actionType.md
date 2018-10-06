@@ -1,6 +1,6 @@
 ### `actionType(type, transform)`
 
-Creates an isolated `reducer` defined by `subReducer` in `type` scope in state.
+Creates a `reducer` that transforms `state` only when action types matches `type`.
 
 - `type: String`
 
@@ -8,11 +8,14 @@ Creates an isolated `reducer` defined by `subReducer` in `type` scope in state.
 
 #### Example
 
-In the following example, we nest a form reducer.
+In the following example, we use two `actionType`'s to define a reducer.
+First one is taking care about action of type `SET_TITLE` and uses its `payload`
+to set `title` property of the state.
+Second one watches for `INC` action and increments `counter` prop by the value of `payload`.
 
 ```javascript
-import {createReducer, nest,} from `k-reducer`;
-import {propEq, assoc,} from 'ramda';
+import {createReducer, actionType,} from `k-reducer`;
+import {assoc, over, lensProp, compose, add,} from 'ramda';
 
 const initialState = {
     title: '',
@@ -22,8 +25,8 @@ const initialState = {
 const reducer = createReducer(
     initialState,
     [
-        action('SET_TITLE', assoc('title')),
-        action('INC', compose(over(lensProp('counter')), add)),
+        actionType('SET_TITLE', assoc('title')),
+        actionType('INC', compose(over(lensProp('counter')), add)),
     ]
 );
 
