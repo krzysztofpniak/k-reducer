@@ -5,3 +5,4 @@
 * API Reference
   * [createReducer](docs/api/createReducer.md)
   * [actionType](docs/api/actionType.md)
+  * [nest](docs/api/nest.md)
