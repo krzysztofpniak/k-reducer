@@ -28,3 +28,6 @@ const reducer = createReducer(
 );
 
 ```
+
+#### See also
+* [createReducer](createReducer.md)
