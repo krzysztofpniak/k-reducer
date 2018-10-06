@@ -5,7 +5,7 @@
 
 `k-reducer` is a library that aims to make application redux reducer easier to write, compose, and reuse with the best what functional programming offers.
 
-It is fully compatible with ramda, lodash-fp and other libraries that uses the `iteratee first, data last` paradigm.
+It is fully compatible with `ramda`, `lodash-fp` and other libraries that uses the `iteratee first, data last` paradigm.
 
 # Getting started
 
