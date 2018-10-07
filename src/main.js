@@ -21,19 +21,6 @@ const actionType2 = (type, transform) => (state, action) => propEq('type', type,
 
 const action = (matcher, transform) => (state, action) => matcher(action) ? uncurryN(2, transform)(action.payload, state) : state;
 
-const root = (type, subReducer) => (state, action) => {
-    const prefix = `${type}.`;
-    if (compose(startsWith(prefix), prop('type'))(action)) {
-        const unwrappedAction = {
-            ...action,
-            type: action.type.substr(prefix.length),
-        };
-        return subReducer(state, unwrappedAction);
-    } else {
-        return state;
-    }
-};
-
 const nest = (type, subReducer) => (state, action) => {
     const prefix = `${type}.`;
     const subState = view(lensProp(type), state);
