@@ -6,8 +6,6 @@ Creates a `reducer` defined by `spec` with `initialState`.
 
 - `spec: Array<reducer>` - reducer specification
 
-{{ "/src/main.js" | jsdoc }}
-
 #### Example
 
 In the following example, we create a basic reducer. We can use `createReducer`
