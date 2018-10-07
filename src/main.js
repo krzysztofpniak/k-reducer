@@ -60,4 +60,4 @@ const forwardTo = (dispatch, ...types) => {
     }
 };
 
-export {createReducer, actionType, actionType2, action, nest, root, forwardTo};
+export {createReducer, actionType, actionType2, action, nest, wrapAction, forwardTo};
