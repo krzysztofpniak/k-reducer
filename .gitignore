@@ -7,4 +7,5 @@ node_modules
 npm-debug.log
 webpack-assets.json
 build
+dist
 npm-debug.log
