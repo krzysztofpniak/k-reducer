@@ -1,6 +1,10 @@
 {
   "name": "k-reducer",
   "version": "0.0.7",
+  "description": "Functional helpers for redux",
+  "license": "MIT",
+  "homepage": "https://klabs.gitbook.io/k-reducer/",
+  "repository": "github:krzysztofpniak/k-reducer",
   "main": "dist/k-reducer.cjs.js",
   "module": "dist/k-reducer.esm.js",
   "browser": "dist/k-reducer.umd.js",
