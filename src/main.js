@@ -56,7 +56,7 @@ const forwardTo = (dispatch, ...types) => {
     if (types.length === 0) {
         return dispatch;
     } else {
-        return action => dispatch(wrapAction(typeof action === 'function' ? action(...types) : action, ...types));
+        return action => dispatch(wrapAction(action, ...types));
     }
 };
 
