@@ -1,7 +1,7 @@
 # k-reducer
 
 [![npm version](https://img.shields.io/npm/v/k-reducer.svg)](https://www.npmjs.com/package/k-reducer)
-[![Build Status](https://travis-ci.org/klabs/k-reducer.svg?branch=master)](https://travis-ci.org/klabs/k-reducer)
+[![Build Status](https://travis-ci.org/krzysztofpniak/k-reducer.svg?branch=master)](https://travis-ci.org/krzysztofpniak/k-reducer)
 
 `k-reducer` is a library that aims to make application redux reducer easier to write, compose, and reuse with the best what functional programming offers.
 
