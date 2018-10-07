@@ -8,4 +8,5 @@ npm-debug.log
 webpack-assets.json
 build
 dist
+coverage
 npm-debug.log
