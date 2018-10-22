@@ -1,4 +1,4 @@
-import { createReducer } from '../'
+import {createReducer} from '../';
 
 const state1 = {
     counter: 0,
@@ -10,12 +10,12 @@ const state2 = {
 
 const action1 = {
     type: 'INC_BY',
-    payload: 1
+    payload: 1,
 };
 
 const action2 = {
     type: 'UNKNOWN',
-    payload: 1
+    payload: 1,
 };
 
 const reducer1 = (state, action) => {
@@ -31,30 +31,15 @@ const reducer1 = (state, action) => {
 describe('createReducer', () => {
     describe('empty', () => {
         it('accepts empty reducer', () => {
-            expect(
-                createReducer(
-                    state1,
-                    []
-                )(state1, action1)
-            ).toBe(state1)
+            expect(createReducer(state1, [])(state1, action1)).toBe(state1);
         });
 
         it('accepts empty state', () => {
-            expect(
-                createReducer(
-                    state1,
-                    []
-                )(undefined, action1)
-            ).toBe(state1)
+            expect(createReducer(state1, [])(undefined, action1)).toBe(state1);
         });
 
         it('accepts empty state', () => {
-            expect(
-                createReducer(
-                    state1,
-                    []
-                )()
-            ).toBe(state1)
+            expect(createReducer(state1, [])()).toBe(state1);
         });
     });
     describe('one simple reducer', () => {
