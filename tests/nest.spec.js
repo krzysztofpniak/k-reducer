@@ -28,19 +28,19 @@ const state4 = {
 
 const action1 = {
     type: 'subSpace.INC_BY',
-    payload: 1
+    payload: 1,
 };
 
 const action2 = {
     type: 'UNKNOWN',
-    payload: 1
+    payload: 1,
 };
 
 const reducer1 = (state = subSpaceState1, action) => {
     if (action.type === 'INC_BY') {
         return {
-            counter: state.counter + action.payload
-        }
+            counter: state.counter + action.payload,
+        };
     } else {
         return state;
     }
@@ -48,29 +48,14 @@ const reducer1 = (state = subSpaceState1, action) => {
 
 describe('nest', () => {
     it('initializes nested state from undefined', () => {
-        expect(
-            nest(
-                'subSpace',
-                reducer1
-            )(undefined, action2)
-        ).toEqual(state2)
+        expect(nest('subSpace', reducer1)(undefined, action2)).toEqual(state2);
     });
 
     it('initializes nested state from object', () => {
-        expect(
-            nest(
-                'subSpace',
-                reducer1
-            )(state1, action2)
-        ).toEqual(state3)
+        expect(nest('subSpace', reducer1)(state1, action2)).toEqual(state3);
     });
 
     it('handles action', () => {
-        expect(
-            nest(
-                'subSpace',
-                reducer1
-            )(state1, action1)
-        ).toEqual(state4)
+        expect(nest('subSpace', reducer1)(state1, action1)).toEqual(state4);
     });
 });

@@ -9,11 +9,11 @@ const state2 = {
 };
 
 const action1 = {
-    type: 'INC'
+    type: 'INC',
 };
 
 const action2 = {
-    type: 'UNKNOWN'
+    type: 'UNKNOWN',
 };
 
 const transform = state => ({
@@ -23,20 +23,10 @@ const transform = state => ({
 
 describe('actionType2', () => {
     it('handles action', () => {
-        expect(
-            actionType2(
-                'INC',
-                transform
-            )(state1, action1)
-        ).toEqual(state2)
+        expect(actionType2('INC', transform)(state1, action1)).toEqual(state2);
     });
 
     it('skips action', () => {
-        expect(
-            actionType2(
-                'INC',
-                transform
-            )(state1, action2)
-        ).toEqual(state1)
+        expect(actionType2('INC', transform)(state1, action2)).toEqual(state1);
     });
 });
