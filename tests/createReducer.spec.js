@@ -8,6 +8,11 @@ const state2 = {
     counter: 1,
 };
 
+const state3 = {
+    counter: 1,
+    title: 'abc',
+};
+
 const action1 = {
     type: 'INC_BY',
     payload: 1,
@@ -21,8 +26,20 @@ const action2 = {
 const reducer1 = (state, action) => {
     if (action.type === 'INC_BY') {
         return {
-            counter: state.counter + action.payload
-        }
+            ...state,
+            counter: state.counter + action.payload,
+        };
+    } else {
+        return state;
+    }
+};
+
+const reducer2 = (state = {title: 'abc'}, action) => {
+    if (action.type === 'SET_TITLE') {
+        return {
+            ...state,
+            title: action.payload,
+        };
     } else {
         return state;
     }
@@ -42,27 +59,26 @@ describe('createReducer', () => {
             expect(createReducer(state1, [])()).toBe(state1);
         });
     });
+
     describe('one simple reducer', () => {
         it('skips action', () => {
-            expect(
-                createReducer(
-                    state1,
-                    [
-                        reducer1,
-                    ]
-                )(state1, action2)
-            ).toEqual(state1)
+            expect(createReducer(state1, [reducer1])(state1, action2)).toEqual(
+                state1
+            );
         });
 
         it('handles action', () => {
+            expect(createReducer(state1, [reducer1])(state1, action1)).toEqual(
+                state2
+            );
+        });
+    });
+
+    describe('nested reducer', () => {
+        it('initializes state', () => {
             expect(
-                createReducer(
-                    state1,
-                    [
-                        reducer1,
-                    ]
-                )(state1, action1)
-            ).toEqual(state2)
+                createReducer(state1, [reducer1, reducer2])(undefined, action1)
+            ).toEqual(state3);
         });
     });
 });
