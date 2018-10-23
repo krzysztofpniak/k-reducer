@@ -18,7 +18,14 @@ const state1 = {
 };
 
 const state2 = {
-    subSpace: subSpaceState1,
+    root: {
+        a: {
+            counter: 0,
+        },
+        b: {
+            title: 'abc',
+        },
+    },
 };
 
 const state3 = {
@@ -67,8 +74,18 @@ const tree1 = {
     b: reducer2,
 };
 
+const tree2 = {
+    root: {
+        a: reducer1,
+        b: reducer2,
+    },
+};
+
 describe('fromTree', () => {
-    it('initializes nested state from undefined', () => {
+    it('initializes state from undefined', () => {
         expect(fromTree(tree1)(undefined, action2)).toEqual(state1);
+    });
+    it('initializes nested state from undefined', () => {
+        expect(fromTree(tree2)(undefined, action2)).toEqual(state2);
     });
 });
