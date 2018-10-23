@@ -8,7 +8,11 @@ const fromTree = tree =>
         values(
             mapObjIndexed(
                 (v, k) =>
-                    typeof v === 'object' ? nest(k, fromTree(v)) : nest(k, v),
+                    k === '.'
+                        ? v
+                        : typeof v === 'object'
+                            ? nest(k, fromTree(v))
+                            : nest(k, v),
                 tree
             )
         )

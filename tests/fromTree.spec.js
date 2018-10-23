@@ -29,8 +29,14 @@ const state2 = {
 };
 
 const state3 = {
-    title: 'Hello',
-    subSpace: subSpaceState1,
+    root: {
+        a: {
+            counter: 1,
+        },
+        b: {
+            title: 'abc',
+        },
+    },
 };
 
 const state4 = {
@@ -39,7 +45,7 @@ const state4 = {
 };
 
 const action1 = {
-    type: 'subSpace.INC_BY',
+    type: 'root.a.INC_BY',
     payload: 1,
 };
 
@@ -87,5 +93,8 @@ describe('fromTree', () => {
     });
     it('initializes nested state from undefined', () => {
         expect(fromTree(tree2)(undefined, action2)).toEqual(state2);
+    });
+    it('handles action in nested state', () => {
+        expect(fromTree(tree2)(state2, action1)).toEqual(state3);
     });
 });
