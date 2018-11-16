@@ -7,7 +7,6 @@
   "repository": "github:krzysztofpniak/k-reducer",
   "main": "dist/k-reducer.cjs.js",
   "module": "dist/k-reducer.esm.js",
-  "browser": "dist/k-reducer.umd.js",
   "dependencies": {
     "ramda": "^0.25.0"
   },
