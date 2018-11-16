@@ -11,10 +11,4 @@ describe('wrapAction', () => {
         const action = {type: 'Bar'};
         expect(wrapAction(action)).toBe(action);
     });
-
-    it('should not modify the dispatch instance when no nesting is provided', () => {
-        const action = {type: 'Bar'};
-        const fn = () => wrapAction(action, 'Foo.Bar');
-        expect(fn).toThrow();
-    });
 });
