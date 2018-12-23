@@ -36,6 +36,11 @@ const action2 = {
   payload: 1,
 };
 
+const action3 = {
+  type: 'subSpace.UNKNOWN',
+  payload: 1,
+};
+
 const reducer1 = (state = subSpaceState1, action) => {
   if (action.type === 'INC_BY') {
     return {
@@ -57,5 +62,9 @@ describe('nest', () => {
 
   it('handles action', () => {
     expect(nest('subSpace', reducer1)(state1, action1)).toEqual(state4);
+  });
+
+  it('passes action with untouched state', () => {
+    expect(nest('subSpace', reducer1)(state4, action3)).toBe(state4);
   });
 });
