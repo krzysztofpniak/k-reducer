@@ -1,4 +1,4 @@
-import {compose, lensProp, over, prop, set, startsWith, view} from 'ramda';
+import {compose, lensProp, prop, set, startsWith, view} from 'ramda';
 
 const nest = (type, subReducer) => (state, action) => {
   const prefix = `${type}.`;
@@ -17,11 +17,12 @@ const nest = (type, subReducer) => (state, action) => {
       ...action,
       type: action.type.substr(prefix.length),
     };
-    return over(
-      lensProp(type),
-      subState => subReducer(subState, unwrappedAction),
-      initializedState
-    );
+
+    const newSubState = subReducer(subState, unwrappedAction);
+
+    return newSubState !== subState
+      ? set(lensProp(type), newSubState, initializedState)
+      : initializedState;
   } else {
     return initializedState;
   }
