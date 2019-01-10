@@ -1,22 +1,10 @@
 import {action} from '../';
-
-const state1 = {
-  counter: 0,
-};
-
-const state2 = {
-  counter: 1,
-};
-
-const action1 = {
-  type: 'INC_BY',
-  payload: 1,
-};
-
-const action2 = {
-  type: 'UNKNOWN',
-  payload: 1,
-};
+import {
+  counterState0,
+  counterState1,
+  someRandomAction,
+  counterActionIncBy,
+} from './testData';
 
 const transform = (payload, state) => ({
   ...state,
@@ -26,13 +14,19 @@ const transform = (payload, state) => ({
 describe('action', () => {
   it('handles action', () => {
     expect(
-      action(a => a.type === 'INC_BY', transform)(state1, action1)
-    ).toEqual(state2);
+      action(a => a.type === 'IncBy', transform)(
+        counterState0,
+        counterActionIncBy(1)
+      )
+    ).toEqual(counterState1);
   });
 
   it('skips action', () => {
     expect(
-      action(a => a.type === 'INC_BY', transform)(state1, action2)
-    ).toEqual(state1);
+      action(a => a.type === 'IncBy', transform)(
+        counterState1,
+        someRandomAction()
+      )
+    ).toEqual(counterState1);
   });
 });
