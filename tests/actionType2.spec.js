@@ -1,32 +1,32 @@
-import {actionType2} from '../'
+import {actionType2} from '../';
 
 const state1 = {
-    counter: 0,
+  counter: 0,
 };
 
 const state2 = {
-    counter: 1,
+  counter: 1,
 };
 
 const action1 = {
-    type: 'INC',
+  type: 'INC',
 };
 
 const action2 = {
-    type: 'UNKNOWN',
+  type: 'UNKNOWN',
 };
 
 const transform = state => ({
-    ...state,
-    counter: state.counter + 1,
+  ...state,
+  counter: state.counter + 1,
 });
 
 describe('actionType2', () => {
-    it('handles action', () => {
-        expect(actionType2('INC', transform)(state1, action1)).toEqual(state2);
-    });
+  it('handles action', () => {
+    expect(actionType2('INC', transform)(state1, action1)).toEqual(state2);
+  });
 
-    it('skips action', () => {
-        expect(actionType2('INC', transform)(state1, action2)).toEqual(state1);
-    });
+  it('skips action', () => {
+    expect(actionType2('INC', transform)(state1, action2)).toEqual(state1);
+  });
 });
