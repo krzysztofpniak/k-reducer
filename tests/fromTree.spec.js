@@ -44,6 +44,40 @@ const state4 = {
   subSpace: subSpaceState2,
 };
 
+const state5 = {
+  otherProp: {
+    x: 1,
+  },
+  root: {
+    a: {
+      counter: 0,
+    },
+    b: {
+      title: 'abc',
+    },
+    otherProp2: {
+      y: 1,
+    },
+  },
+};
+
+const state5b = {
+  otherProp: {
+    x: 1,
+  },
+  root: {
+    a: {
+      counter: 1,
+    },
+    b: {
+      title: 'abc',
+    },
+    otherProp2: {
+      y: 1,
+    },
+  },
+};
+
 const action1 = {
   type: 'root.a.INC_BY',
   payload: 1,
@@ -87,6 +121,53 @@ const tree2 = {
   },
 };
 
+const tree3 = {
+  root: {
+    sub: {
+      a: reducer1,
+      b: reducer2,
+    },
+  },
+};
+
+const state6 = {
+  otherProp: {
+    x: 1,
+  },
+  root: {
+    sub: {
+      a: {
+        counter: 0,
+      },
+      b: {
+        title: 'abc',
+      },
+      otherProp2: {
+        y: 1,
+      },
+    },
+  },
+};
+
+const state6b = {
+  otherProp: {
+    x: 1,
+  },
+  root: {
+    sub: {
+      a: {
+        counter: 2,
+      },
+      b: {
+        title: 'abc',
+      },
+      otherProp2: {
+        y: 1,
+      },
+    },
+  },
+};
+
 describe('fromTree', () => {
   it('initializes state from undefined', () => {
     expect(fromTree(tree1)(undefined, action2)).toEqual(state1);
@@ -96,5 +177,13 @@ describe('fromTree', () => {
   });
   it('handles action in nested state', () => {
     expect(fromTree(tree2)(state2, action1)).toEqual(state3);
+  });
+  it("doesn't brake existing state", () => {
+    expect(fromTree(tree2)(state5, {type: 'dupa'})).toEqual(state5);
+  });
+  it('deeply nested', () => {
+    expect(
+      fromTree(tree3)(state6, {type: 'root.sub.a.INC_BY', payload: 2})
+    ).toEqual(state6b);
   });
 });
