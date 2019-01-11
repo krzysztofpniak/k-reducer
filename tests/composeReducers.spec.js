@@ -24,6 +24,12 @@ describe('composeReducers', () => {
     ).toEqual({...counterState0, ...textStateEmpty});
   });
 
+  it('composes two reducers with @@INIT', () => {
+    expect(
+      composeReducers(counterReducer, textReducer)(undefined, {type: '@@INIT'})
+    ).toEqual({...counterState0, ...textStateEmpty});
+  });
+
   it('composes two reducers 2', () => {
     const composedReducer = composeReducers(counterReducer, textReducer);
     let state = {...counterState0, ...textStateEmpty};
