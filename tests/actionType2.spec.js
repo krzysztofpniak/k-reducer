@@ -3,7 +3,7 @@ import {
   counterState0,
   counterState1,
   someRandomAction,
-  counterActionIncBy,
+  counterActionInc,
 } from './testData';
 
 const transform = state => ({
@@ -14,7 +14,16 @@ const transform = state => ({
 describe('actionType2', () => {
   it('handles action', () => {
     expect(
-      actionType2('IncBy', transform)(counterState0, counterActionIncBy(1))
+      actionType2('Inc', transform)(counterState0, counterActionInc())
+    ).toEqual(counterState1);
+  });
+
+  it('handles action creator', () => {
+    expect(
+      actionType2(counterActionInc, transform)(
+        counterState0,
+        counterActionInc()
+      )
     ).toEqual(counterState1);
   });
 

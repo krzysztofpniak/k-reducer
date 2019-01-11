@@ -18,6 +18,15 @@ describe('actionType', () => {
     ).toEqual(counterState1);
   });
 
+  it('handles action creator', () => {
+    expect(
+      actionType(counterActionIncBy, transform)(
+        counterState0,
+        counterActionIncBy(1)
+      )
+    ).toEqual(counterState1);
+  });
+
   it('skips action', () => {
     expect(
       actionType('IncBy', transform)(counterState0, someRandomAction())
