@@ -1,6 +1,6 @@
 {
   "name": "k-reducer",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Functional helpers for redux",
   "license": "MIT",
   "homepage": "https://klabs.gitbook.io/k-reducer/",
