@@ -48,15 +48,15 @@ const reducer2 = (state = {title: 'abc'}, action) => {
 describe('createReducer', () => {
   describe('empty', () => {
     it('accepts empty reducer', () => {
-      expect(createReducer(state1, [])(state1, action1)).toBe(state1);
+      expect(createReducer(state1, [])(state1, action1)).toEqual(state1);
     });
 
     it('accepts empty state', () => {
-      expect(createReducer(state1, [])(undefined, action1)).toBe(state1);
+      expect(createReducer(state1, [])(undefined, action1)).toEqual(state1);
     });
 
-    it('accepts empty state', () => {
-      expect(createReducer(state1, [])()).toBe(state1);
+    it('accepts empty state 2', () => {
+      expect(createReducer(state1, [])()).toEqual(state1);
     });
   });
 
