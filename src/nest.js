@@ -1,4 +1,15 @@
-import {compose, lensProp, prop, set, startsWith, view} from 'ramda';
+import {
+  compose,
+  lensProp,
+  prop,
+  set,
+  startsWith,
+  view,
+  useWith,
+  identity,
+} from 'ramda';
+
+const startsWithPrefix = useWith(startsWith, [identity, prop('type')]);
 
 const nest = (type, subReducer) => (state, action) => {
   const prefix = `${type}.`;
@@ -7,12 +18,7 @@ const nest = (type, subReducer) => (state, action) => {
     ? state
     : set(lensProp(type), subReducer(undefined, {type: '@@NEST_INIT'}), state);
 
-  if (
-    compose(
-      startsWith(prefix),
-      prop('type')
-    )(action)
-  ) {
+  if (startsWithPrefix(prefix, action)) {
     const unwrappedAction = {
       ...action,
       type: action.type.substr(prefix.length),
